@@ -1,7 +1,7 @@
 ## Allocate an EIP for natgateways
 
 resource "aws_eip" "eip_nat_gateway_az1" {
-  vpc = true
+  domain = "vpc"
 
 
   tags = {
@@ -10,7 +10,7 @@ resource "aws_eip" "eip_nat_gateway_az1" {
 }
 
 resource "aws_eip" "eip_nat_gateway_az2" {
-  vpc = true
+  domain = "vpc"
 
   tags = {
     Name = "EIP Nat-Gateway-AZ2"

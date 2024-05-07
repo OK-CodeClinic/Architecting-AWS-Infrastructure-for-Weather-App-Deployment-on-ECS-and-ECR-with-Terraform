@@ -29,3 +29,12 @@ module "nat_gateway" {
   private_app_subnet_az2_id  = module.vpc.private_app_subnet_az2_id
   private_data_subnet_az2_id = module.vpc.private_data_subnet_az2_id
 }
+
+
+## Create Security group from module
+
+module "security_group" {
+  source = "../modules/security_groups"
+
+  vpc_id = module.vpc.vpc_id
+}
