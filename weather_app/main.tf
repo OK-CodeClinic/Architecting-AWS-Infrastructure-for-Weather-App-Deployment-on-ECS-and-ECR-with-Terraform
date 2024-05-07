@@ -47,3 +47,12 @@ module "ecs-task-exe-role" {
   project_name = module.vpc.project_name
 
 }
+
+
+## Create Amazon Certificate
+module "acm" {
+  source = "../modules/acm"
+
+  domain_name             = var.domain_name
+  alternative_domain_name = var.alternative_domain_name
+}
