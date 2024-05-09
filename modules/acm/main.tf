@@ -38,3 +38,14 @@ resource "aws_acm_certificate_validation" "acm_certificate_validation" {
   certificate_arn         = aws_acm_certificate.acm_certificate.arn
   validation_record_fqdns = [for record in aws_route53_record.route53_record : record.fqdn]
 }
+
+
+
+### Create Cname for my subdomain
+resource "aws_route53_record" "cname_route53_record" {
+  zone_id = data.aws_route53_zone.route53_zone.zone_id
+  name    = var.alternative_domain_name
+  type    = "CNAME"
+  ttl     = "60"
+  records = [var.alb_dns_name]
+}

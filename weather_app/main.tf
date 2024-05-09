@@ -56,6 +56,7 @@ module "acm" {
 
   domain_name             = var.domain_name
   alternative_domain_name = var.alternative_domain_name
+  alb_dns_name            = module.alb.alb_dns_name
 
 }
 
@@ -69,4 +70,19 @@ module "alb" {
   public_subnet_az2_id = module.vpc.public_subnet_az2_id
   vpc_id               = module.vpc.vpc_id
   certificate_arn      = module.acm.certificate_arn
+}
+
+
+## Create a Cointainer Cluster Service
+module "ecs" {
+  source = "../modules/ecs"
+
+  project_name                 = module.vpc.project_name
+  ecs_tasks_execution_role_arn = module.ecs-task-exe-role.ecs_tasks_execution_role_arn
+  docker_image                 = var.docker_image
+  region                       = module.vpc.region
+  private_app_subnet_az1_id    = module.vpc.private_app_subnet_az1_id
+  private_app_subnet_az2_id    = module.vpc.private_app_subnet_az2_id
+  ecs_sg_id                    = module.security_group.ecs_sg_id
+  alb_target_group_arn         = module.alb.alb_target_group_arn
 }
