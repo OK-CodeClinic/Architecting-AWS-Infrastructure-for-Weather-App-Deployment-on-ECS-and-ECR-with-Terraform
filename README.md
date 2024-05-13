@@ -16,7 +16,20 @@ This project aims to deploy a Dockerized application on AWS Fargate using Terraf
 
 ## Usage
 - Set up docker engine
-- Build the docker image and push it to ECR using ECR push commands.
+  Download docker engine using the script here: 
+- Build the docker image
+![Screenshot (345)](https://github.com/OK-CodeClinic/Terraform-Deployment-for-Dockerized-Weather-Application-on-AWS-ECR-and-ECS-Fargate/assets/100064229/6cbdd034-a5f9-49e6-81d6-98ba469babba)
+
+
+- Push it to ECR using ECR push commands.
+  ![Screenshot (353)](https://github.com/OK-CodeClinic/Terraform-Deployment-for-Dockerized-Weather-Application-on-AWS-ECR-and-ECS-Fargate/assets/100064229/b7f235b4-2d58-499b-9e3d-a904003e8562)
+
+  - image
+
+  ![Screenshot (354)](https://github.com/OK-CodeClinic/Terraform-Deployment-for-Dockerized-Weather-Application-on-AWS-ECR-and-ECS-Fargate/assets/100064229/15d0dae1-9d80-4d5e-b0d6-44be59fbd956)
+
+
+  
 - Clone the repo.
 ```
 git clone https://github.com/OK-CodeClinic/Architecting-AWS-Infrastructure-for-Weather-App-Deployment-on-ECS-and-ECR-with-Terraform
@@ -28,6 +41,7 @@ git clone https://github.com/OK-CodeClinic/Architecting-AWS-Infrastructure-for-W
 ```
 terraform init
 ```
+
 - Configure your AWS credentials: Ensure your AWS credentials are properly configured either through environment variables, AWS CLI configuration, or using a shared credentials file.
 
 - Update Terraform variables: Modify the terraform.tfvars file to set appropriate values for your deployment, such as AWS region, VPC CIDR, subnets, domain name, etc.
@@ -46,6 +60,7 @@ terraform Apply
 ### What happens when terraform is applied in this scenario?
 - Resource Creation:  it creates Elastic IP addresses (module.nat_gateway.aws_eip), VPC (module.vpc.aws_vpc), CloudWatch log groups (module.ecs.aws_cloudwatch_log_group), ACM certificate (module.acm.aws_acm_certificate), ECS cluster (module.ecs.aws_ecs_cluster), security groups (module.security_group.aws_security_group), load balancer (module.alb.aws_lb), etc.
 
+
 - Terraform continues to provision resources such as subnets, route tables, NAT gateways, etc., required for networking and infrastructure setup.
 
 - Route53 Record Creation: Terraform creates Route53 records (module.acm.aws_route53_record) to associate with the ACM certificate for domain validation.  The Route53 records are created for both the root domain (okproject.site) and subdomain (weather-app.okproject.site) in my case.
@@ -58,6 +73,10 @@ It configures listeners for HTTP and HTTPS traffic (module.alb.aws_lb_listener).
 
 - As soon as all resource complete. The docker image will be running in the dns mapped to the hosted zone
 
+![Screenshot (336)](https://github.com/OK-CodeClinic/Terraform-Deployment-for-Dockerized-Weather-Application-on-AWS-ECR-and-ECS-Fargate/assets/100064229/ce433dce-c219-41ea-9dcf-064b6b8951e5)
+
+- Then check the domain or the sub domain provided in the tfvars file in the web brower. And Boom! app is working
+  ![Screenshot (348)](https://github.com/OK-CodeClinic/Terraform-Deployment-for-Dockerized-Weather-Application-on-AWS-ECR-and-ECS-Fargate/assets/100064229/359c436f-ada9-455a-b7f8-675e016a4908)
 
 
 
