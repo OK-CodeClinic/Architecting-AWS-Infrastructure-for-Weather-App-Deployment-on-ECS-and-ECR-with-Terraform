@@ -73,7 +73,8 @@ It configures listeners for HTTP and HTTPS traffic (module.alb.aws_lb_listener).
 
 - As soon as all resource complete. The docker image will be running in the dns mapped to the hosted zone
 
-![Screenshot (336)](https://github.com/OK-CodeClinic/Terraform-Deployment-for-Dockerized-Weather-Application-on-AWS-ECR-and-ECS-Fargate/assets/100064229/ce433dce-c219-41ea-9dcf-064b6b8951e5)
+![Screenshot (349)](https://github.com/OK-CodeClinic/Terraform-Deployment-for-Dockerized-Weather-Application-on-AWS-ECR-and-ECS-Fargate/assets/100064229/53e18383-ff86-4205-808b-a409756fcaad)
+
 
 - Then check the domain or the sub domain provided in the tfvars file in the web brower. And Boom! app is working
   ![Screenshot (348)](https://github.com/OK-CodeClinic/Terraform-Deployment-for-Dockerized-Weather-Application-on-AWS-ECR-and-ECS-Fargate/assets/100064229/359c436f-ada9-455a-b7f8-675e016a4908)
