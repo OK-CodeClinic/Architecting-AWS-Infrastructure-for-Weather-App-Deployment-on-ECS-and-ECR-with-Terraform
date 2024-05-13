@@ -16,7 +16,7 @@ This project aims to deploy a Dockerized application on AWS Fargate using Terraf
 
 ## Usage
 - Set up docker engine
-  Download docker engine using the script here: 
+  Download docker engine using the script here:![docker](https://github.com/OK-CodeClinic/Terraform-Deployment-for-Dockerized-Weather-Application-on-AWS-ECR-and-ECS-Fargate/blob/main/docker.sh) 
 - Build the docker image
 ![Screenshot (345)](https://github.com/OK-CodeClinic/Terraform-Deployment-for-Dockerized-Weather-Application-on-AWS-ECR-and-ECS-Fargate/assets/100064229/6cbdd034-a5f9-49e6-81d6-98ba469babba)
 
