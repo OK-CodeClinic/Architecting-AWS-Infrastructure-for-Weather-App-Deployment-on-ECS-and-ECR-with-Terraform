@@ -3,6 +3,7 @@
 
 ## Description
 This project aims to deploy a Dockerized application on AWS Fargate using Terraform. It covers the provisioning of necessary AWS resources such as VPC, subnets, NAT Gateway, Internet Gateway, route tables, security groups, ACM certificate, load balancer, and target groups.
+![new_fargate](https://github.com/OK-CodeClinic/Terraform-Deployment-for-Dockerized-Weather-Application-on-AWS-ECR-and-ECS-Fargate/assets/100064229/3c991e1d-9e0a-41ff-989d-4e7c42e1e155)
 
 
 ## Prerequisites
