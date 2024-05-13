@@ -56,6 +56,15 @@ resource "aws_security_group" "ecs_security_group" {
     security_groups = [aws_security_group.alb_security_group.id]
   }
 
+  ingress {
+    description     = "Allow https traffic to nodejs "
+    from_port       = 3000
+    to_port         = 3000
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb_security_group.id]
+  }
+
+
   egress {
     from_port   = 0
     to_port     = 0

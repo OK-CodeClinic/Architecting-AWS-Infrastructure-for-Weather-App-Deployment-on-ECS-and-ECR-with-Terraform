@@ -1,2 +1,83 @@
-# Architecting-AWS-Infrastructure-for-Weather-App-Deployment-on-ECS-and-ECR-with-Terraform
-Effortlessly architect  AWS infrastructure using Terraform for seamless dockerized weather app deployment on ECS &amp; ECR
+
+# Terraform Deployment for Dockerized Weather-Application on AWS Fargate
+
+## Description
+This project aims to deploy a Dockerized application on AWS Fargate using Terraform. It covers the provisioning of necessary AWS resources such as VPC, subnets, NAT Gateway, Internet Gateway, route tables, security groups, ACM certificate, load balancer, and target groups.
+
+
+## Prerequisites
+
+- Install [Terraform](https://www.terraform.io/downloads.html) .
+- AWS credentials configured with appropriate permissions.
+- Docker installed locally.
+- An existing Route 53 hosted zone for your domain.
+
+
+## Usage
+- Set up docker engine
+- Build the docker image and push it to ECR using ECR push commands.
+- Clone the repo.
+```
+git clone https://github.com/OK-CodeClinic/Architecting-AWS-Infrastructure-for-Weather-App-Deployment-on-ECS-and-ECR-with-Terraform
+
+
+```
+
+- Initilize terraform
+```
+terraform init
+```
+- Configure your AWS credentials: Ensure your AWS credentials are properly configured either through environment variables, AWS CLI configuration, or using a shared credentials file.
+
+- Update Terraform variables: Modify the terraform.tfvars file to set appropriate values for your deployment, such as AWS region, VPC CIDR, subnets, domain name, etc.
+
+- Review and customize Terraform code:
+
+- Review the Terraform modules and code in the main.tf file to ensure it aligns with your deployment requirements. Make any necessary modifications.
+
+- Apply terraform configuration and changes
+```
+terraform Apply
+```
+
+
+
+### What happens when terraform is applied in this scenario?
+- Resource Creation:  it creates Elastic IP addresses (module.nat_gateway.aws_eip), VPC (module.vpc.aws_vpc), CloudWatch log groups (module.ecs.aws_cloudwatch_log_group), ACM certificate (module.acm.aws_acm_certificate), ECS cluster (module.ecs.aws_ecs_cluster), security groups (module.security_group.aws_security_group), load balancer (module.alb.aws_lb), etc.
+
+- Terraform continues to provision resources such as subnets, route tables, NAT gateways, etc., required for networking and infrastructure setup.
+
+- Route53 Record Creation: Terraform creates Route53 records (module.acm.aws_route53_record) to associate with the ACM certificate for domain validation.  The Route53 records are created for both the root domain (okproject.site) and subdomain (weather-app.okproject.site) in my case.
+
+- Load Balancer Configuration: Terraform sets up the Application Load Balancer (ALB) and associated target groups (module.alb.aws_lb_target_group).
+It configures listeners for HTTP and HTTPS traffic (module.alb.aws_lb_listener).
+
+
+- Certificate Validation: Terraform begins the validation process for the ACM certificate (module.acm.aws_acm_certificate_validation) by creating Route53 records to prove domain ownership.
+
+- As soon as all resource complete. The docker image will be running in the dns mapped to the hosted zone
+
+
+
+
+### Cleanup
+To destroy the created resources after testing.
+``` terraform destroy ```.
+
+#### Author
+Kehinde Omokungbe
+
+####  Acknowlegment
+- docker/riverthead42
+- Developer of the App : Hamza KOC
+
+
+
+
+
+
+
+
+
+
+
