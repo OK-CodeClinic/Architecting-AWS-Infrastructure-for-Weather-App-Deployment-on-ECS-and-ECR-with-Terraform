@@ -32,9 +32,7 @@ This project aims to deploy a Dockerized application on AWS Fargate using Terraf
   
 - Clone the repo.
 ```
-git clone https://github.com/OK-CodeClinic/Architecting-AWS-Infrastructure-for-Weather-App-Deployment-on-ECS-and-ECR-with-Terraform
-
-
+git clone https://github.com/OK-CodeClinic/Terraform-Deployment-for-Dockerized-Weather-Application-on-AWS-ECR-and-ECS-Fargate
 ```
 
 - Initilize terraform
